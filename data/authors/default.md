@@ -9,7 +9,7 @@ linkedin: https://www.linkedin.com/maximekubik
 github: https://github.com/mkubdev
 ---
 
-Hi, i'm Maxime Kubik ! Welcome here.  🎩
+Hi, i'm Maxime Kubik ! Welcome here. 🎩 This blog serves as a playground for me to experiment with ideas and share some of my findings. It's a reflection of my career path and interests - especially on the technical side of things.
 
 I'm musician, web3 builder, and software engineer based in Lyon, France. I'm currently working at TFTLabs - Innovative Digital Solutions as Fullstack Software Engineer from 2019.
 
