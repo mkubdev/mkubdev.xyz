@@ -6,7 +6,7 @@ const siteMetadata = {
   language: 'en-us',
   theme: 'system', // system, dark or light
   siteUrl: 'https://mkubdev.xyz',
-  siteRepo: '#',
+  siteRepo: 'https://github.com/mkubdev/mkubdev.xyz',
   siteLogo: '/static/images/logo.png',
   image: '/static/images/mkubdev_avatar.jpg',
   socialBanner: '/static/images/twitter-card-mkubdev.png',
