@@ -36,10 +36,16 @@ export default function Home({ posts }) {
       <div>
         <div>
           <div className="flex w-full flex-wrap pb-2">
-            <Card
+            {/* <Card
               title="Learning Diary"
               description="A place where I share resources that I've been learning throughout the years."
               href={'/learning'}
+              className="py-4 md:px-4"
+            /> */}
+            <Card
+              title="Blog"
+              description=" This blog serves as a playground for me to experiment with ideas and share some of my findings."
+              href={'/blog'}
               className="py-4 md:px-4"
             />
             <Card
