@@ -30,7 +30,7 @@ module.exports = {
         'texture-pattern': "url('/static/images/right-dark-gradient.svg')",
       },
       fontFamily: {
-        sans: ['Be Vietnam Pro', ...defaultTheme.fontFamily.sans],
+        sans: ['Be Vietnam Pro', 'Syne', ...defaultTheme.fontFamily.sans],
       },
       colors: {
         primary: colors.violet,

@@ -9,7 +9,7 @@ const siteMetadata = {
   siteRepo: '#',
   siteLogo: '/static/images/logo.png',
   image: '/static/images/mkubdev_avatar.jpg',
-  socialBanner: '/static/images/twitter-card.png',
+  socialBanner: '/static/images/twitter-card-mkubdev.png',
   email: 'mkubdev@gmail.com',
   github: 'https://github.com/mkubdev',
   twitter: 'https://twitter.com/Twitter',
