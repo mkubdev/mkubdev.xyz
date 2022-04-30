@@ -52,19 +52,14 @@ const securityHeaders = [
   },
 ]
 
-module.exports = withBundleAnalyzer({
+const withPlugins = require('next-compose-plugins')
+
+const nextConfig = {
+  compress: true,
   reactStrictMode: true,
   pageExtensions: ['js', 'jsx', 'md', 'mdx'],
   eslint: {
-    dirs: ['pages', 'components', 'lib', 'layouts', 'scripts'],
-  },
-  async headers() {
-    return [
-      {
-        source: '/(.*)',
-        headers: securityHeaders,
-      },
-    ]
+    dirs: ['pages', 'components', 'lib', 'layouts', 'scripts', 'context'],
   },
   webpack: (config, { dev, isServer }) => {
     config.module.rules.push({
@@ -72,16 +67,53 @@ module.exports = withBundleAnalyzer({
       use: ['@svgr/webpack'],
     })
 
-    if (!dev && !isServer) {
-      // Replace React with Preact only in client production build
-      Object.assign(config.resolve.alias, {
-        'react/jsx-runtime.js': 'preact/compat/jsx-runtime',
-        react: 'preact/compat',
-        'react-dom/test-utils': 'preact/test-utils',
-        'react-dom': 'preact/compat',
-      })
-    }
+    config.module.rules.push({
+      test: /\.(glb|gltf)$/,
+      exclude: /node_modules/,
+      use: ['file-loader'],
+    })
+
+    config.module.rules.push({
+      test: /react-spring/,
+      sideEffects: true,
+    })
 
     return config
   },
-})
+}
+
+module.exports = withPlugins([[withBundleAnalyzer]], nextConfig)
+
+// module.exports = withBundleAnalyzer({
+//   reactStrictMode: true,
+//   pageExtensions: ['js', 'jsx', 'md', 'mdx'],
+//   eslint: {
+//     dirs: ['pages', 'components', 'lib', 'layouts', 'scripts'],
+//   },
+//   async headers() {
+//     return [
+//       {
+//         source: '/(.*)',
+//         headers: securityHeaders,
+//       },
+//     ]
+//   },
+//   webpack: (config, { dev, isServer }) => {
+//     config.module.rules.push({
+//       test: /\.svg$/,
+//       use: ['@svgr/webpack'],
+//     })
+
+//     if (!dev && !isServer) {
+//       // Replace React with Preact only in client production build
+//       Object.assign(config.resolve.alias, {
+//         'react/jsx-runtime.js': 'preact/compat/jsx-runtime',
+//         react: 'preact/compat',
+//         'react-dom/test-utils': 'preact/test-utils',
+//         'react-dom': 'preact/compat',
+//       })
+//     }
+
+//     return config
+//   },
+// })
