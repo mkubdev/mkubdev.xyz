@@ -4,7 +4,7 @@ const siteMetadata = {
   headerTitle: 'Personal Website',
   description: 'A Software Engineer that code for passion and design for fun.',
   language: 'en-us',
-  theme: 'system', // system, dark or light
+  theme: 'dark', // system, dark or light
   siteUrl: 'https://mkubdev.xyz',
   siteRepo: 'https://github.com/mkubdev/mkubdev.xyz',
   siteLogo: '/static/images/logo.png',
@@ -25,6 +25,7 @@ const siteMetadata = {
     simpleAnalytics: false, // true or false
     umamiWebsiteId: '', // e.g. 123e4567-e89b-12d3-a456-426614174000
     googleAnalyticsId: 'G-FELNV83XJB', // e.g. UA-000000-2 or G-XXXXXXX
+    // googleAnalyticsId: 'G-K3PDHEXNX5', // e.g. UA-000000-2 or G-XXXXXXX
   },
   newsletter: {
     // supports mailchimp, buttondown, convertkit, klaviyo, revue
