@@ -45,7 +45,7 @@ class MyDocument extends Document {
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
-            gtag('config', 'G-FELNV83XJB', {
+            gtag('config', 'G-DEL9N8ZZ91', {
               page_path: window.location.pathname,
             });
           `,
