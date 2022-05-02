@@ -4,7 +4,7 @@ const siteMetadata = {
   headerTitle: 'Personal Website',
   description: 'A Software Engineer that code for passion and design for fun.',
   language: 'en-us',
-  theme: 'dark', // system, dark or light
+  theme: 'system', // system, dark or light
   siteUrl: 'https://mkubdev.xyz',
   siteRepo: 'https://github.com/mkubdev/mkubdev.xyz',
   siteLogo: '/static/images/logo.png',
@@ -13,8 +13,8 @@ const siteMetadata = {
   email: 'mkubdev@gmail.com',
   github: 'https://github.com/mkubdev',
   twitter: 'https://twitter.com/mkubdev',
-  facebook: 'https://facebook.com',
-  youtube: 'https://youtube.com',
+  facebook: '',
+  youtube: '',
   linkedin: 'https://www.linkedin.com/in/maximekbk',
   locale: 'en-US',
   analytics: {
