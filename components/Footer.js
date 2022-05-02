@@ -1,6 +1,7 @@
 import Link from './Link'
 import siteMetadata from '@/data/siteMetadata'
 import SocialIcon from '@/components/social-icons'
+import NowPlaying from '@/components/NowPlaying'
 
 export default function Footer() {
   return (
@@ -13,6 +14,9 @@ export default function Footer() {
           <SocialIcon kind="youtube" href={siteMetadata.youtube} size="6" />
           <SocialIcon kind="linkedin" href={siteMetadata.linkedin} size="6" />
           <SocialIcon kind="twitter" href={siteMetadata.twitter} size="6" />
+        </div>
+        <div className="mb-3 flex">
+          <NowPlaying />
         </div>
         <div className="mb-8 flex space-x-2 text-sm text-gray-500 dark:text-gray-400">
           <div>{siteMetadata.author}</div>
