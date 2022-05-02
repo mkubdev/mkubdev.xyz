@@ -1,0 +1,51 @@
+---
+title: Three.js - WebGL - Shader - Basic
+date: '2022-05-02'
+tags: ['threejs', 'javascript', '3d', 'todayilearned']
+draft: true
+summary: Make fun with three.js - Testing it out.
+---
+
+Link:
+
+- https://codepen.io/prisoner849/pen/MWbeoGj
+- https://tympanus.net/Tutorials/GlassEffect/
+
+[ Add gif inspiration here ]
+
+## Getting started
+
+The website is built on `React@^17` so installing the latest version of threejs will not work.
+To be able to install the lib on `React@^17`, you should install it by typing :
+
+```shell
+npm install three @react-three/fiber@^7
+```
+
+It should work out of the box but you will encounter untranspiled add-ons in the three.js ecosystem, in that case you can install the `next-transpile-modules` module:
+
+```shell
+npm install next-transpile-modules --save-dev
+```
+
+Then, add this to your next.config.js
+
+```js
+const withTM = require('next-transpile-modules')([
+  'three',
+  'react-spring',
+  '@react-spring/three',
+  '@react-spring/web',
+  '@react-three/fiber',
+  '@react-three/postprocessing',
+  '@react-three/drei',
+])
+```
+
+> You will also need postprocessing and drei :
+
+```js
+npm install @react-three/drei@^7 @react-three/postprocessing @react-spring/three
+```
+
+WIP
