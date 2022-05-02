@@ -6,8 +6,6 @@ import fetcher from '@/lib/utils/fetcher'
 export default function NowPlaying() {
   const { data } = useSWR('/api/now-playing', fetcher)
 
-  console.log('NowPlaying test:', data)
-
   return (
     <div className="flex w-full items-center gap-1 sm:gap-2">
       <svg className="h-5 w-5 flex-none" viewBox="0 0 168 168">
