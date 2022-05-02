@@ -29,7 +29,7 @@ export default function Home({ posts }) {
           <span className="animate-fade-text">ik</span>
         </h1>
         <p className="px-2 text-xl font-light leading-6 text-gray-500 dark:text-gray-400 sm:px-6 xl:px-0">
-          A Software Engineer that codes for passion and designs for fun.
+          A Software Engineer who codes with passion and designs for fun.
         </p>
       </div>
       <div>
@@ -49,7 +49,7 @@ export default function Home({ posts }) {
             />
             <Card
               title="About me"
-              description="Learn about me, my career and a timeline of my lifetime."
+              description="Learn about me, through my career timeline and side projects."
               href={'/about'}
               className="py-4 md:px-4"
             />
