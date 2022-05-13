@@ -1,44 +1,52 @@
 name: Lighthouse CI
-on: push
+
+on:
+  push:
+  pull_request:
+    branches:
+      - master
+
 jobs:
   lighthouse:
+    name: Lighthouse Scores Analysis
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - name: Checkout code
+        uses: actions/checkout@v2
 
       - name: Audit URLs using Lighthouse
         id: lighthouse_audit
         uses: treosh/lighthouse-ci-action@v9
         with:
           urls: |
-            https://mkubdev.xyz/
-            https://mkubdev.xyz/blog
+            https://www.mkubdev.xyz/
+            https://www.mkubdev.xyz/blog
           # budgetPath: ./budget.json # test performance budgets
           configPath: ./.github/workflows/lighthousesrc.json # ligthouse config
           uploadArtifacts: true # save results as an action artifacts
           temporaryPublicStorage: true # upload lighthouse report to the temporary storage
-          run: 5 # run Lighthouse 5 times to get more reliable performance results
-      
+          runs: 5 # run Lighthouse 5 times to get more reliable performance results
+
       - name: Format lighthouse score
-      id: format_lighthouse_score
-      uses: actions/github-script@v5
-      with:
-        script: |
-          const lighthouseCommentMaker = require('./.github/workflows/lighthouseCommentMaker.js')
+        id: format_lighthouse_score
+        uses: actions/github-script@v5
+        with:
+          script: |
+            const lighthouseCommentMaker = require('./.github/workflows/lighthouseCommentMaker.js')
 
-          const lighthouseOutputs = {
-            manifest: ${{ steps.lighthouse_audit.outputs.manifest }},
-            links: ${{ steps.lighthouse_audit.outputs.links }}
-          };
+            const lighthouseOutputs = {
+              manifest: ${{ steps.lighthouse_audit.outputs.manifest }},
+              links: ${{ steps.lighthouse_audit.outputs.links }}
+            };
 
-          const comment = lighthouseCommentMaker({ lighthouseOutputs });
-          core.setOutput("comment", comment);
+            const comment = lighthouseCommentMaker({ lighthouseOutputs });
+            core.setOutput("comment", comment);
 
       - name: Add Lighthouse stats as comment
-      id: comment_to_pr
-      uses: marocchino/sticky-pull-request-comment@v2.0.0
-      with:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        number: ${{ github.event.pull_request.number }}
-        header: lighthouse
-        message: ${{ steps.format_lighthouse_score.outputs.comment }}
+        id: comment_to_pr
+        uses: marocchino/sticky-pull-request-comment@v2.0.0
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          number: ${{ github.event.pull_request.number }}
+          header: lighthouse
+          message: ${{ steps.format_lighthouse_score.outputs.comment }}
