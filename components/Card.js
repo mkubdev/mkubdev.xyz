@@ -49,7 +49,16 @@ const Card = ({
           after:bg-no-repeat after:opacity-0 after:mix-blend-hard-light after:transition-opacity after:duration-500
           after:will-change-auto hover:after:animate-hue-animation hover:after:opacity-100 dark:bg-violet-950`}
           >
-            {imgSrc && <Image alt={title} src={imgSrc} className="object-cover object-center" />}
+            {imgSrc && (
+              <Image
+                height="200"
+                width="400"
+                layout="responsive"
+                alt={title}
+                src={imgSrc}
+                className="object-cover object-center"
+              />
+            )}
             {onlyImg && <>{children}</>}
             {!onlyImg && (
               <div className="p-5">

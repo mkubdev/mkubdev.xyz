@@ -24,7 +24,7 @@ export default function Projects() {
                 key={d.title}
                 title={d.title}
                 description={d.description}
-                // imgSrc={d.imgSrc} // issue with height and width - no image actually
+                imgSrc={d.imgSrc} // issue with height and width - no image actually
                 href={d.href}
                 className="p-4"
               />
