@@ -1,9 +1,13 @@
 ---
 title: Sample .md file
-date: '2016-03-08'
-tags: ['markdown', 'code', 'features']
+date: 2016-03-08
+tags:
+  - markdown
+  - code
+  - features
 draft: false
 summary: Example of a markdown file with code blocks and syntax highlighting
+lastmod: 2022-05-17T09:02:22.747Z
 ---
 
 A sample post with markdown.

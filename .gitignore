@@ -1,5 +1,9 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
+# work in progress
+pages/sandbox/index.html
+components/threejs/
+
 # dependencies
 /node_modules
 /.pnp
@@ -29,8 +33,18 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
+# frontmatter
+.frontmatter
+
+# vscode
+.vscode
+
+# blog-old
+/data/blog-old*
+
 # local env files
 .env.local
+.env.example
 .env.development.local
 .env.test.local
 .env.production.local
