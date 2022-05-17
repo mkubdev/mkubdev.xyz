@@ -1,6 +1,6 @@
 {
   "name": "mkubdev.xyz",
-  "version": "1.O.0",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
     "start": "cross-env SOCKET=true node ./scripts/next-remote-watch.js ./data",

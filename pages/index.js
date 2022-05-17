@@ -20,8 +20,8 @@ export default function Home({ posts }) {
     <>
       <PageSEO title={siteMetadata.title} description={siteMetadata.description} />
       <div className="relative pb-12 pt-2 text-center sm:pb-14 sm:pt-3">
-        <div className="absolute inset-x-0 top-0 -z-20 m-auto h-full">{/* <HeroEffect /> */}</div>
-        <div className="h-52">{/* <UnchartedRing /> */}</div>
+        <div className="absolute inset-x-0 top-0 -z-20 m-auto h-full">{}</div>
+        <div className="h-52">{}</div>
 
         <h1 className="py-3 text-4xl font-extrabold leading-9 tracking-tight text-gray-900 dark:text-gray-100 sm:text-4xl sm:leading-10 md:text-5xl md:leading-14 xl:text-6xl">
           Hi, I'm <span className="animate-fade-text">Maxime</span>
@@ -35,18 +35,18 @@ export default function Home({ posts }) {
       <div>
         <div>
           <div className="flex w-full flex-wrap pb-2">
-            {/* <Card
-              title="Learning Diary"
-              description="A place where I share resources that I've been learning throughout the years."
-              href={'/learning'}
-              className="py-4 md:px-4"
-            /> */}
             <Card
               title="Blog"
               description=" This blog serves as a playground for me to experiment with ideas and share some of my findings."
               href={'/blog'}
               className="py-4 md:px-4"
             />
+            {/* <Card
+              title="Learning Diary"
+              description="A place where I share resources that I've been learning throughout the years."
+              href={'/learning'}
+              className="py-4 md:px-4"
+            /> */}
             <Card
               title="About me"
               description="Learn about me, through my career timeline and side projects."
@@ -57,7 +57,7 @@ export default function Home({ posts }) {
           <ul className="divide-y divide-transparent md:px-4">
             {!posts.length && 'No posts found.'}
             {posts.slice(0, MAX_DISPLAY).map((frontMatter) => {
-              const { slug, date, title, summary, tags } = frontMatter
+              const { slug, date, title, summary, tags, lastmod } = frontMatter
               return (
                 <li key={slug} className="pt-12 pb-6">
                   <article>

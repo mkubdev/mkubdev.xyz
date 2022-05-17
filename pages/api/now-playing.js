@@ -9,7 +9,6 @@ export default async function handler(_, res) {
 
   const nowPlaying = await response.json()
   if (nowPlaying.currently_playing_type === 'track') {
-    console.log('nowPlaying =>', nowPlaying)
     // song
     const isPlaying = nowPlaying.is_playing
     const title = nowPlaying.item.name
