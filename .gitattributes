@@ -18,6 +18,9 @@
 ##   This will handle all files NOT defined below.
 *                 text eol=lf
 
+# 3D Models and GLTF
+*.glb             binary
+
 # Source code
 *.bash            text eol=lf
 *.bat             text eol=crlf
