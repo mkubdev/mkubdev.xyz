@@ -10,7 +10,7 @@ export default function Model({ ...props }) {
   const parentGroup = useRef()
   const group = useRef()
   // const { nodes, materials } = useGLTF('/mkubdev-playerone.glb')
-  const { nodes, materials, animations } = useGLTF('/mkubdev-guitar.glb')
+  const { nodes, materials, animations } = useGLTF('/avatar3d/mkubdev-guitar.glb')
   const { actions } = useAnimations(animations, group)
 
   console.log(animations)
@@ -88,4 +88,4 @@ export default function Model({ ...props }) {
   )
 }
 
-useGLTF.preload('/mkubdev-playerone.glb')
+useGLTF.preload('/avatar3d/mkubdev-guitar.glb')
