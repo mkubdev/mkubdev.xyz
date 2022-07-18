@@ -15,7 +15,7 @@ import { Globals } from '@react-spring/shared'
 
 import * as ga from '../lib/ga'
 import { useRouter } from 'next/router'
-import { useEffect } from 'react'
+import React, { useEffect } from 'react'
 
 const isDevelopment = process.env.NODE_ENV === 'development'
 const isSocket = process.env.SOCKET
@@ -27,6 +27,15 @@ export default function App({ Component, pageProps, router }) {
   Globals.assign({
     frameLoop: 'always',
   })
+
+  // Three.js workaround:
+  // --------------------
+  // 'Warning: useLayoutEffect does nothing on the server, because its effect cannot be encoded
+  // into the server renderer's output format. This will lead to a mismatch between the initial,
+  // non-hydrated UI and the intended UI.'
+  if (typeof document === 'undefined') {
+    React.useLayoutEffect = React.useEffect
+  }
 
   useEffect(() => {
     const handleRouteChange = (url) => {
