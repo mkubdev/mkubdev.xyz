@@ -9,15 +9,10 @@ import { useAnimations } from '@react-three/drei/core/useAnimations'
 export default function Model({ ...props }) {
   const parentGroup = useRef()
   const group = useRef()
-  // const { nodes, materials } = useGLTF('/mkubdev-playerone.glb')
   const { nodes, materials, animations } = useGLTF('/avatar3d/mkubdev-guitar.glb')
   const { actions } = useAnimations(animations, group)
 
-  console.log(animations)
-
   // 'Armature.001|mixamo.com|Layer0' is the name of the animation exported from blender.
-  console.log(actions)
-
   useEffect(() => {
     actions['Armature.001|mixamo.com|Layer0.001'].play()
   })

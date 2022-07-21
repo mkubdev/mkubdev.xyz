@@ -4,12 +4,9 @@ import Tag from '@/components/Tag'
 import siteMetadata from '@/data/siteMetadata'
 import { getAllFilesFrontMatter } from '@/lib/mdx'
 import formatDate from '@/lib/utils/formatDate'
-import React, { Suspense } from 'react'
-import { Canvas } from '@react-three/fiber'
-import { OrbitControls } from '@react-three/drei/core/OrbitControls'
 import NewsletterForm from '@/components/NewsletterForm'
 import Card from '@/components/Card'
-import Model from '@/components/Model'
+import ReadyPlayerMe from '@/components/3d/ReadyPlayerMe'
 
 const MAX_DISPLAY = 5
 
@@ -24,23 +21,7 @@ export default function Home({ posts }) {
       <PageSEO title={siteMetadata.title} description={siteMetadata.description} />
       <div className="relative pb-12 pt-2 text-center sm:pb-14 sm:pt-3">
         <div className="absolute inset-x-0 top-0 -z-20 m-auto h-full">{}</div>
-        <div className="h-96">
-          <Canvas
-            camera={{ position: [2, 0, 12.25], fov: 15 }}
-            style={{
-              backgroundColor: 'transparent',
-            }}
-          >
-            <ambientLight intensity={1.25} />
-            <ambientLight intensity={0.1} />
-            <directionalLight intensity={0.4} />
-            <Suspense fallback={null}>
-              <Model position={[0.025, -0.9, 0]} />
-            </Suspense>
-            <OrbitControls />
-          </Canvas>
-        </div>
-
+        <ReadyPlayerMe />
         <h1 className="py-3 text-4xl font-extrabold leading-9 tracking-tight text-gray-900 dark:text-gray-100 sm:text-4xl sm:leading-10 md:text-5xl md:leading-14 xl:text-6xl">
           Hi, I'm <span className="animate-fade-text">Maxime</span>
           <span> Kub</span>
