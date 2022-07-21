@@ -1,6 +1,6 @@
 ---
 name: Maxime Kubik
-avatar: /static/images/mkubdev_avatar.jpg
+avatar: /static/images/mkubdev_avatar.png
 occupation: Software Engineer
 company: TFTLabs
 email: mkubdev@gmail.com

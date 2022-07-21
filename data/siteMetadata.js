@@ -8,7 +8,7 @@ const siteMetadata = {
   siteUrl: 'https://mkubdev.xyz',
   siteRepo: 'https://github.com/mkubdev/mkubdev.xyz',
   siteLogo: '/static/images/logo.png',
-  image: '/static/images/mkubdev_avatar.jpg',
+  image: '/static/images/mkubdev_avatar.png',
   socialBanner: '/static/images/twitter-card-mkubdev.png',
   email: 'mkubdev@gmail.com',
   github: 'https://github.com/mkubdev',
