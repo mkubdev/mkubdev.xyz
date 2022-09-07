@@ -1,0 +1,162 @@
+---
+title: Create custom Tailwind Error Page in next.js
+date: '2022-09-06'
+tags: ['nextjs', 'todayilearned', 'tailwind']
+draft: false
+summary: 'Next.js provides a static 404 page by default, but learn to create beautiful Tailwind custom error page in Next.js'
+---
+
+Hello there! 👋
+First article of the `Next.js` topic, I'll try to share tips and usefull code snippets here! 🧪
+
+---
+
+## Introduction
+
+A [404 page](#what-is-a-404-error-page) could be visited frequently. Every time a user accesses `Next.js`, an error page is rendered on the server, adding to server load. Increased prices and sluggish experiences may follow from this.
+
+Without requiring the addition of any more files, `Next.js` comes with a static 404 page by default to avoid the issues mentioned above. But we can extend this page to build a custom one! ⚡
+
+Let's see a basic implementation!
+
+# Create Custom 404 Page
+
+What we'll build:
+
+<div className="flex flex-wrap -mx-2 overflow-hidden xl:-mx-2">
+  <div className="my-1 px-2 w-full overflow-hidden xl:my-1 xl:px-2 xl:w-1/2">
+    ![custom-404-1](/static/images/nextjs/custom-404-page.JPG)
+  </div>
+</div>
+
+Start your next.js application, and find a random page like `/page-not-present` to see the built-in 404 page (the one we want to customize!):
+
+<div className="flex flex-wrap -mx-2 overflow-hidden xl:-mx-2">
+  <div className="my-1 px-2 w-full overflow-hidden xl:my-1 xl:px-2 xl:w-1/2">
+    ![classic-404-1](/static/images/nextjs/classic-404-page.JPG)
+  </div>
+</div>
+
+To create the custom 404 page, we need to create a new page called `404.js` in our `pages` directory:
+
+```js
+// pages/404.js
+import Link from 'next/link'
+
+const Custom404 = () => {
+  return (
+    <div className="min-h-full bg-white px-4 py-16 sm:px-6 sm:py-24 md:grid md:place-items-center lg:px-8">
+      <div className="mx-auto max-w-max">
+        <main className="sm:flex">
+          <p className="bg-gradient-to-br from-pink-400 to-cyan-600 bg-clip-text text-4xl font-bold tracking-tight text-transparent sm:text-5xl">
+            404
+          </p>
+          <div className="sm:ml-6">
+            <div className="sm:border-l sm:border-gray-200 sm:pl-6">
+              <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl">
+                Page not found
+              </h1>
+              <p className="mt-1 text-base text-gray-500">
+                Please check the URL in the address bar and try again.
+              </p>
+            </div>
+            <div className="mt-10 flex space-x-3 sm:border-l sm:border-transparent sm:pl-6">
+              <Link href="/">
+                <a className="inline-flex items-center rounded-md  border-transparent  bg-gradient-to-br from-pink-400 to-cyan-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-gradient-to-br hover:from-pink-600 hover:to-cyan-800 focus:outline-none focus:ring-2 focus:ring-pink-500 focus:ring-offset-2">
+                  Go back home
+                </a>
+              </Link>
+              <Link href="/support">
+                <a className="inline-flex items-center rounded-md border border-transparent bg-pink-100 px-4 py-2 text-sm font-medium text-black hover:bg-pink-200 focus:outline-none focus:ring-2 focus:ring-pink-500 focus:ring-offset-2">
+                  Contact support
+                </a>
+              </Link>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+  )
+}
+
+export default Custom404
+```
+
+🎉 Now, we can reload the `/no-page-here` page, and we should see the new page:
+
+<div className="flex flex-wrap -mx-2 overflow-hidden xl:-mx-2">
+  <div className="my-1 px-2 w-full overflow-hidden xl:my-1 xl:px-2 xl:w-1/2">
+    ![custom-404-2](/static/images/nextjs/classic-404-page2.JPG)
+  </div>
+</div>
+
+# Create Custom 500 page
+
+In your development journey, you'll encounter a 500 error due to missing data or server issues.
+Like the `404.js` custom page above, you can create a custom error page for thoses as well.
+
+To create the custom `500` page, we need to create a new page called `500.js` in our `pages` directory:
+
+```js
+// pages/500.js
+import Link from 'next/link'
+
+const Custom500 = () => {
+  return (
+    <div className="min-h-full bg-white px-4 py-16 sm:px-6 sm:py-24 md:grid md:place-items-center lg:px-8">
+      <div className="mx-auto max-w-max">
+        <main className="sm:flex">
+          <p className="bg-gradient-to-br from-red-400 to-yellow-600 bg-clip-text text-4xl font-bold tracking-tight text-transparent sm:text-5xl">
+            500
+          </p>
+          <div className="sm:ml-6">
+            <div className="sm:border-l sm:border-gray-200 sm:pl-6">
+              <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl">
+                Internal Server error
+              </h1>
+              <p className="mt-1 text-base text-gray-500">
+                The server encountered an internal error. Please try again later.
+              </p>
+            </div>
+            <div className="mt-10 flex space-x-3 sm:border-l sm:border-transparent sm:pl-6">
+              <Link href="/">
+                <a className="inline-flex items-center rounded-md  border-transparent  bg-gradient-to-br from-red-400 to-yellow-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-gradient-to-br hover:from-pink-600 hover:to-cyan-800 focus:outline-none focus:ring-2 focus:ring-pink-500 focus:ring-offset-2">
+                  Go back home
+                </a>
+              </Link>
+              <Link href="/support">
+                <a className="inline-flex items-center rounded-md border border-transparent bg-pink-100 px-4 py-2 text-sm font-medium text-black hover:bg-pink-200 focus:outline-none focus:ring-2 focus:ring-pink-500 focus:ring-offset-2">
+                  Contact support
+                </a>
+              </Link>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+  )
+}
+
+export default Custom500
+```
+
+🎉 Now, we can reload the broken app, and we should see the new page:
+
+<div className="flex flex-wrap -mx-2 overflow-hidden xl:-mx-2">
+  <div className="my-1 px-2 w-full overflow-hidden xl:my-1 xl:px-2 xl:w-1/2">
+    ![custom-500-1](/static/images/nextjs/custom-500-page.JPG)
+  </div>
+</div>
+---
+
+## What is a 404 error page?
+
+The 404 error indicates that the server where the page should reside has been contacted but that the page is does not exist at that address, at that time.
+
+## What is a 500 error page?
+
+The 500 Internal server errors indicates. The application is basically unusable. Most likely, there is a server error, not just one in your code.
+
+🔗 See more about **HTTP error code**: [TODO: create error code blog post](url_here)
+
+If you ever reach the end of this article, thank you for reading me ⚡✨

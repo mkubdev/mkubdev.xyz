@@ -2,7 +2,7 @@ const siteMetadata = {
   title: 'Maxime Kubik - Software Engineer, Lyon',
   author: 'Maxime Kubik',
   headerTitle: 'Personal Website',
-  description: 'A Software Engineer that code for passion and design for fun.',
+  description: 'A Software Engineer who code for passion and design for fun.',
   language: 'en-us',
   theme: 'system', // system, dark or light
   siteUrl: 'https://mkubdev.xyz',
