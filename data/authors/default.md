@@ -5,7 +5,7 @@ occupation: Software Engineer
 company: TFTLabs
 email: mkubdev@gmail.com
 twitter: https://twitter.com/mkubdev
-linkedin: https://www.linkedin.com/maximekubik
+linkedin: https://www.linkedin.com/in/maximekbk/
 github: https://github.com/mkubdev
 ---
 
