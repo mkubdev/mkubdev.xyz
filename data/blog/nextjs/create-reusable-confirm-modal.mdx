@@ -1,0 +1,191 @@
+TODO: [Add gif here!](url)
+
+## TLDR
+
+This is a complete guide on how to create a reusable confirm dialog component for `next.js`. Here we go!
+
+## Prerequisites
+
+Before you begin, ensure that you have `node` and `npm` or `Yarn` installed on your machine. Here is a run-down of the core technologies we will be using.
+
+- [Next.js](https://learnnextjs.com/) — A framework for building server-side rendered(SSR) [React](https://reactjs.org/) applications with ease. It handles most of the challenges that come with building SSR React apps.
+- [React](https://reactjs.org/) — A very popular JavaScript DOM rendering framework for building scalable web applications using a component-based architecture.
+- [TailwindCSS](https://tailwindcss.com/) — A utility-first CSS framework packed with classes like `flex`, `pt-4`, `text-center` and `rotate-90` that can be composed to build any design, directly in your markup.
+
+
+## Setup
+Create a next.js application with tailwind pre-configured:
+```bash
+npx create-next-app@latest --ts -e with-tailwindcss my_app
+# or
+yarn create next-app --typescript --example with-tailwindcss my_app
+```
+- Add the[ headlessui](https://headlessui.com/) library: 
+```bash
+npm install @headlessui/react -s
+# or
+yarn add @headlessui/react
+```
+
+## Components
+
+### ConfirmDialog
+
+```tsx
+import { Dialog, Transition } from '@headlessui/react';
+import { Fragment, useState } from 'react';
+
+import ButtonCancel from '@/components/ButtonCancel';
+import ButtonConfirm from '@/components/ButtonConfirm';
+
+interface Props {
+  title: string;
+  children: React.ReactNode;
+  open: boolean;
+  onClose: Function;
+  onConfirm: Function;
+}
+export default function ConfirmDialog(props: Props) {
+  const { open, onClose, title, children, onConfirm } = props;
+  if (!open) {
+    return <></>;
+  }
+
+  return (
+    <Transition appear show={open} as={Fragment}>
+      <Dialog as="div" className="relative z-10" onClose={onClose}>
+        <Transition.Child
+          as={Fragment}
+          enter="ease-out duration-300"
+          enterFrom="opacity-0"
+          enterTo="opacity-100"
+          leave="ease-in duration-200"
+          leaveFrom="opacity-100"
+          leaveTo="opacity-0"
+        >
+          <div className="fixed inset-0 bg-black bg-opacity-25" />
+        </Transition.Child>
+
+        <div className="fixed inset-0 overflow-y-auto">
+          <div className="flex items-center justify-center min-h-full p-4 text-center">
+            <Transition.Child
+              as={Fragment}
+              enter="ease-out duration-300"
+              enterFrom="opacity-0 scale-95"
+              enterTo="opacity-100 scale-100"
+              leave="ease-in duration-200"
+              leaveFrom="opacity-100 scale-100"
+              leaveTo="opacity-0 scale-95"
+            >
+              <Dialog.Panel className="w-full max-w-md p-6 overflow-hidden text-left align-middle transition-all transform bg-white shadow-xl rounded-2xl">
+                <Dialog.Title
+                  as="h3"
+                  className="text-lg font-medium leading-6 text-gray-900"
+                >
+                  {title}
+                </Dialog.Title>
+                <div className="mt-2">
+                  <p className="text-sm text-gray-500">{children}</p>
+                </div>
+
+                <div className="flex justify-between mt-4">
+                  <Button
+                    onClick={() => onClose()}
+                    className="bg-secondary hover:bg-secondary-light"
+                  >
+                    No
+                  </Button>
+                  <ButtonConfirm
+                    onClick={() => {
+                      onClose();
+                      onConfirm();
+                    }}
+                  >
+                    Yes
+                  </ButtonConfirm>
+                </div>
+              </Dialog.Panel>
+            </Transition.Child>
+          </div>
+        </div>
+      </Dialog>
+    </Transition>
+  );
+}
+```
+### ButtonCancel
+
+```tsx
+interface Props {
+  children: React.ReactNode;
+  type?: 'submit' | 'button' | 'reset';
+  onClick?: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
+  className?: string;
+}
+export default function ButtonCancel(props: Props) {
+  const { type = 'button', children, onClick, className = '' } = props;
+  return (
+    <button
+      className={`bg-red-400 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline ${className}`}
+      type={type}
+      onClick={onClick}
+    >
+      {children}
+    </button>
+  );
+}
+```
+
+### ButtonConfirm
+
+```tsx
+interface Props {
+  children: React.ReactNode;
+  type?: 'submit' | 'button' | 'reset';
+  onClick?: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
+  className?: string;
+}
+export default function ButtonConfirm(props: Props) {
+  const { type = 'button', children, onClick, className = '' } = props;
+  return (
+    <button
+      className={`bg-green-400 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline ${className}`}
+      type={type}
+      onClick={onClick}
+    >
+      {children}
+    </button>
+  );
+}
+```
+
+## How to use the component?
+
+In order to use the `<ConfirmDialog />` component, you need to use a boolean state to display it:
+```tsx
+export default function myComponent() {
+const [confirmOpen, setConfirmOpen] = useState(false);
+
+// ...
+
+return (
+<div>
+<button
+      className={`bg-cyan-400 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline'
+      type={type}
+      onClick={setConfirmOpen(true)}
+    >
+      {children}
+    </button>
+<ConfirmDialog
+        title="Confirm your status update:"
+        open={confirmOpen}
+        onClose={() => setConfirmOpen(false)}
+        onConfirm={(e) => handleConfirm(e)}
+      >
+        Are you sure you have completed all response sequences? You cannot modify your answers once the form has been validated.
+      </ConfirmDialog>
+</div>
+);
+}
+```
