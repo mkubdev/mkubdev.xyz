@@ -14,15 +14,13 @@ First article of the `Next.js` topic, I'll try to share tips and usefull code sn
 
 ## Introduction
 
-A [404 page](#what-is-a-404-error-page) could be visited frequently. Every time a user accesses `Next.js`, an error page is rendered on the server, adding to server load. Increased prices and sluggish experiences may follow from this.
-
-Without requiring the addition of any more files, `Next.js` comes with a static 404 page by default to avoid the issues mentioned above. But we can extend this page to build a custom one! ⚡
+A [404](#what-is-a-404-error-page) error page can frequently be visited, and every time a user accesses `Next.js`, an error page is rendered on the server. This adds to server load, leading to increased prices and sluggish experiences. To avoid these issues, Next.js comes with a static 404 page by default without requiring the addition of any more files. However, we can extend this page to build a custom one.
 
 Let's see a basic implementation!
 
 # Create Custom 404 Page
 
-What we'll build:
+We will build a basic implementation of a custom 404 page.:
 
 <div className="flex flex-wrap -mx-2 overflow-hidden xl:-mx-2">
   <div className="my-1 px-2 w-full overflow-hidden xl:my-1 xl:px-2 xl:w-1/2">
@@ -30,7 +28,7 @@ What we'll build:
   </div>
 </div>
 
-Start your next.js application, and find a random page like `/page-not-present` to see the built-in 404 page (the one we want to customize!):
+Start your next.js application, and find a random page like `/page-not-present` to see the built-in 404 page that we want to customize:
 
 <div className="flex flex-wrap -mx-2 overflow-hidden xl:-mx-2">
   <div className="my-1 px-2 w-full overflow-hidden xl:my-1 xl:px-2 xl:w-1/2">
@@ -93,10 +91,7 @@ export default Custom404
 
 # Create Custom 500 page
 
-In your development journey, you'll encounter a 500 error due to missing data or server issues.
-Like the `404.js` custom page above, you can create a custom error page for thoses as well.
-
-To create the custom `500` page, we need to create a new page called `500.js` in our `pages` directory:
+In your development journey, you may encounter a `500` error due to missing data or server issues. Like the custom `404.js` page above, you can create a custom error page for those as well. To create the custom `500` page, we need to create a new page called `500.js` in our pages directory:
 
 ```js
 // pages/500.js
