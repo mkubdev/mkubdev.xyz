@@ -9,10 +9,12 @@ linkedin: https://www.linkedin.com/in/maximekbk/
 github: https://github.com/mkubdev
 ---
 
-Hi, i'm Maxime Kubik ! Welcome here. 🎩 This blog serves as a playground for me to experiment with ideas and share some of my findings. It's a reflection of my career path and interests - especially on the technical side of things. Add me to [LinkedIn](https://www.linkedin.com/in/maximekbk).
+Greetings, fellow tech enthusiasts and curious minds! My name is Maxime Kubik, and I'm thrilled to welcome you to my digital domain! 🎩
 
-I'm musician, web3 builder, and software engineer based in Lyon, France. I'm currently working at [TFTLabs - Innovative Digital Solutions](https://tftlabs.fr) as Software Engineer.
+This blog is not your average, run-of-the-mill platform. Oh no, this is where I unleash my inner geek and experiment with some of the craziest and most unconventional ideas I can think of. Think of it as my personal laboratory, where I share my findings and observations with like-minded individuals.
 
-This is the first version of my website. I'm currently working on it, but it's not finished yet. I'll be adding more features soon.
+As a musician, web3 builder, and software engineer hailing from the beautiful city of Lyon, France, I am constantly inspired by the cutting-edge innovations and technologies that surround me. In my current role as a Software Engineer at [TFTLabs - Innovative Digital Solutions](https://tftlabs.fr), I have the opportunity to work on collaborative and tailor-made solutions using the latest technologies availables.
 
-Feel free to reach me on my socials networks to work/hack together!
+You may have noticed that this is the first iteration of my website, and I must admit that it's a work in progress. But fear not, dear readers, for I have plenty of exciting new features and updates in the pipeline. Stay tuned for more!
+
+Last but not least,
