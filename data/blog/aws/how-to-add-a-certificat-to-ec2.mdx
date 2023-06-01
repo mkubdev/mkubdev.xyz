@@ -1,0 +1,85 @@
+---
+title: How to install a SSL Certificate on Amazon EC2 Server
+date: 2023-06-01
+tags:
+  - todayilearned
+  - devops
+  - aws
+draft: false
+summary: What you should you tell and share to a beginner developer, like what the best
+  path to learn?
+keywords:
+  - aws
+  - certbot
+  - devops
+slug: how-to-install-certificat-on-ec2
+lastmod: 2023-06-01T10:34:42.321Z
+---
+
+Amazon Elastic Compute Cloud (EC2) instances do not provide a default signed SSL/TLS certificate. If you need to enable secure communication between your EC2 instance and clients, you'll need to obtain and install a valid SSL/TLS certificate.
+
+## Requirements
+
+- EC2 with HTTP and HTTPS enabled in Security Groups
+- Port 80 and 443 are unused
+- Apache or Nginx with domaine name pointed at your server
+- Ubuntu > 18.04 with sudo privileges
+
+## What is certbot ?
+
+Certbot is an easy-to-use client that fetches a certificate from Let’s Encrypt—an open certificate authority launched by the EFF, Mozilla, and others—and deploys it to a web server. Certbot and Let’s Encrypt can automate away the pain and let you turn on and manage HTTPS with simple commands. Using Certbot and Let’s Encrypt is free, so there’s no need to arrange payment. [Read more](https://eff-certbot.readthedocs.io/en/stable/intro.html).
+
+## Install the certificat
+
+1. We'll use snap packages to install certbot
+   `sudo snap install core; sudo snap refresh core`
+
+2. Delete any previous version of Certbot if already installed
+   `sudo apt remove certbot`
+
+3. Install the certbot
+   `sudo snap install --classic certbot`
+
+4. Link the Certbot CLI from the snap install install folder to your path
+   `sudo ln -s /snap/bin/certbot /usr/bin/certbot`
+
+5. Enable port 443
+   `sudo ufw allow 443`
+
+6. Run automated Certbot command to get certificates automaticaly:
+
+```bash
+// For standlone server
+sudo certbot certonly --standalone -d
+
+// For Apache server
+sudo certbot --apache
+
+// For Nginx server
+sudo certbot --nginx
+
+// For install on another webservice service than 443 and 80
+sudo certbot certonly --webroot
+```
+
+I'll continue with Apache server.
+Once you type the command, the CLI will ask you wich domain to register on the certificat (I use the one pointing on my ec2 server) :
+
+<div className="flex flex-wrap -mx-2 overflow-hidden xl:-mx-2">
+  <div className="my-1 px-2 w-full overflow-hidden xl:my-1 xl:px-2 xl:w-1/2">
+    ![certbot](/static/images/aws/cert.PNG)
+  </div>
+</div>
+
+## Test your certificat
+
+- Go on [SSLLabs](https://ssllabs.com/ssltest/) to test your domain:
+  <div className="flex flex-wrap -mx-2 overflow-hidden xl:-mx-2">
+    <div className="my-1 px-2 w-full overflow-hidden xl:my-1 xl:px-2 xl:w-1/2">
+      ![Test SSL](/static/images/aws/cert2.PNG)
+    </div>
+  </div>
+
+Your domain is know secured by a Let's encrypt certificat!
+
+> Don't forget to add a cronjob to renew it ⚠
